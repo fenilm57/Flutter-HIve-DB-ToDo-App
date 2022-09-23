@@ -48,7 +48,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('TO DO'),
+        title: const Text(
+          'TODO with HIVE',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+          ),
+        ),
+        centerTitle: true,
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
@@ -76,7 +84,6 @@ class _HomePageState extends State<HomePage> {
             setState(() {
               db.todoList.removeAt(index);
             });
-            db.updateData();
           },
         ),
       ),

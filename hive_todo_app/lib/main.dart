@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hive_todo_app/homepage.dart';
+import 'package:hive_todo_app/provider/todo_task_methods.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   //init hive
@@ -21,9 +23,16 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
+        primarySwatch: Colors.orange,
       ),
-      home: const HomePage(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider.value(
+            value: TodoMethods(),
+          ),
+        ],
+        child: const HomePage(),
+      ),
     );
   }
 }
